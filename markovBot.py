@@ -1,7 +1,8 @@
+from pymarkovchain import MarkovChain  # You'll need the pymarkovchain package. See README
 from errbot.botplugin import BotPlugin
 from errbot import botcmd
-from markovchain import MarkovChain
 import requests
+
 
 class MarkovBot(BotPlugin):
 
@@ -9,7 +10,6 @@ class MarkovBot(BotPlugin):
 	def talk(self, mess, args):
 		""" Generate a sentence based on database """
 		return MarkovChain().generateString()
-
 
 	@botcmd
 	def dbgenfromfile(self, mess, args):
