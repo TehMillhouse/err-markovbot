@@ -33,6 +33,13 @@ class MarkovBot(BotPlugin):
             return 'Error: Could not generate database'
 
     @botcmd
+    def dbgenfromstring(self, mess, args):
+        if MarkovChain().generateDatabase(args):
+            return 'Done.'
+        else:
+            return 'Error: Could not generate database from String'
+
+    @botcmd
     def dbgenfromurl(self, mess, args):
         req = requests.get(args)
         if req.ok and MarkovChain().generateDatabase(req.content):
