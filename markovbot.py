@@ -13,6 +13,11 @@ class MarkovBot(BotPlugin):
         return MarkovChain().generateString()
 
     @botcmd
+    def complete(self, mess, args):
+        """ Try to complete a sentence """
+        return MarkovChain().generateStringWithSeed(args)
+
+    @botcmd
     def dbgenfromfile(self, mess, args):
         """ Generate markov chain word database """
         markov = MarkovChain()
