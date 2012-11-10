@@ -7,8 +7,8 @@ import requests
 
 class MarkovBot(BotPlugin):
 
-	def __init__(self):
-		self.markov = MarkovChain()
+    def __init__(self):
+        self.markov = MarkovChain()
 
     @botcmd
     def talk(self, mess, args):
