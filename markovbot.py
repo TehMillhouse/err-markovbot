@@ -21,7 +21,7 @@ class MarkovBot(BotPlugin):
         return self.markov.generateStringWithSeed(args)
 
     @botcmd
-    def dbgenfromfile(self, mess, args):
+    def gendbfromfile(self, mess, args):
         """ Generate markov chain word database """
         try:
             with open(args) as txtFile:
@@ -35,14 +35,14 @@ class MarkovBot(BotPlugin):
             return 'Error: Could not generate database'
 
     @botcmd
-    def dbgenfromstring(self, mess, args):
+    def gendbfromstring(self, mess, args):
         if self.markov.generateDatabase(args):
             return 'Done.'
         else:
             return 'Error: Could not generate database from String'
 
     @botcmd
-    def dbgenfromurl(self, mess, args):
+    def gendbfromurl(self, mess, args):
         req = requests.get(args)
         if req.ok and self.markov.generateDatabase(req.content):
             return 'Done.'
