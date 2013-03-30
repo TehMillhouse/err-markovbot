@@ -1,6 +1,6 @@
 [Core]
 Name = MarkovBot
 Module = markovbot
-    
+
 [Documentation]
 Description = Markov chain-based text generator

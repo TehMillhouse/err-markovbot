@@ -2,7 +2,7 @@ from pymarkovchain import MarkovChain
 # You'll need the pymarkovchain package. See README
 from errbot.botplugin import BotPlugin
 from errbot import botcmd
-import requests
+import httplib2
 
 
 class MarkovBot(BotPlugin):
@@ -44,8 +44,8 @@ class MarkovBot(BotPlugin):
 
     @botcmd
     def gendbfromurl(self, mess, args):
-        req = requests.get(args)
-        if req.ok and self.markov.generateDatabase(req.content):
+        response, content = httplib2.Http().request(args, 'GET')
+        if response['status'] == '200' and self.markov.generateDatabase(content.decode('utf-8')):
             return 'Done.'
         else:
             return 'Error: Could not generate database from URL'
