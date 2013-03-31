@@ -9,7 +9,7 @@ class MarkovBot(BotPlugin):
 
     def __init__(self):
         super(MarkovBot, self).__init__()
-        self.markov = MarkovChain()
+        self.markov = MarkovChain(dbFilePath='./markovdb')
 
     @botcmd
     def talk(self, mess, args):
