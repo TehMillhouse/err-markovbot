@@ -23,7 +23,7 @@ class MarkovBot(BotPlugin):
 
     @botcmd
     def gendbfromfile(self, mess, args):
-        """ Generate markov chain word database """
+        """ Generate markov chain word database based on local file """
         try:
             with open(args) as txtFile:
                 txt = txtFile.read()
@@ -37,6 +37,7 @@ class MarkovBot(BotPlugin):
 
     @botcmd
     def gendbfromstring(self, mess, args):
+        """ Generate markov chain word database based on given string """
         if self.markov.generateDatabase(args):
             return 'Done.'
         else:
@@ -44,6 +45,7 @@ class MarkovBot(BotPlugin):
 
     @botcmd
     def gendbfromurl(self, mess, args):
+        """ Generate markov chain word database based on contents of url """
         response, content = httplib2.Http().request(args, 'GET')
         if response['status'] == '200' and self.markov.generateDatabase(content.decode('utf-8')):
             return 'Done.'
