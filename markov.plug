@@ -4,3 +4,6 @@ Module = markovbot
 
 [Documentation]
 Description = Markov chain-based text generator
+
+[Python]
+Version=2+
